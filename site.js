@@ -10,6 +10,19 @@ document.querySelectorAll('.js-mail-txt').forEach((a) => { a.textContent = EMAIL
 document.querySelectorAll('.js-phone-txt').forEach((a) => { a.textContent = local; a.dir = 'ltr'; });
 document.querySelectorAll('.js-year').forEach((s) => { s.textContent = new Date().getFullYear(); });
 
+// מוצרים בקרוסלה — img: נתיב לתמונה (ריבועית, רקע שקוף עדיף). בינתיים מקומות שמורים.
+const PRODUCTS = [
+  { name: 'ביסקווישי', img: 'img/products/biskwishy.webp' },
+  { name: 'בלופיז', img: 'img/products/bloopies.webp' },
+];
+const track = document.getElementById('track');
+const card = (p, i) => `<div class="prod" style="--i:${i}"><div class="pimg">${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : '<span>🧸</span>'}</div><h4>${p.name}</h4></div>`;
+// חוזרים על הרשימה עד שיש מספיק כרטיסים למלא מסך רחב, ואז פעמיים ברצף כדי שהלולאה תתחבר בלי קפיצה
+let row = [...PRODUCTS];
+while (row.length < 8) row = row.concat(PRODUCTS);
+track.innerHTML = [...row, ...row].map(card).join('');
+track.style.setProperty('--dur', `${row.length * 5}s`);
+
 // תפריט בטלפון
 const burger = document.querySelector('.burger');
 const menu = document.querySelector('.menu');
