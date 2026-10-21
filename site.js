@@ -10,13 +10,31 @@ document.querySelectorAll('.js-mail-txt').forEach((a) => { a.textContent = EMAIL
 document.querySelectorAll('.js-phone-txt').forEach((a) => { a.textContent = local; a.dir = 'ltr'; });
 document.querySelectorAll('.js-year').forEach((s) => { s.textContent = new Date().getFullYear(); });
 
-// מוצרים בקרוסלה — img: נתיב לתמונה (ריבועית, רקע שקוף עדיף). בינתיים מקומות שמורים.
+// מוצרים בקרוסלה — img: נתיב לתמונה (ריבועית, רקע שקוף)
 const PRODUCTS = [
   { name: 'ביסקווישי', img: 'img/products/biskwishy.webp' },
   { name: 'בלופיז', img: 'img/products/bloopies.webp' },
+  { name: 'קראשיז', img: 'img/products/crushies.webp' },
+  { name: 'מוג׳יבול', img: 'img/products/mojiball.webp' },
+  { name: 'LEGENDARY 23', img: 'img/products/legendary-purple.webp' },
+  { name: 'מון רוק', img: 'img/products/moonrock.webp' },
+  { name: 'קסטו׳ש', img: 'img/products/smooshy-smore.webp' },
+  { name: 'פופקליק!', img: 'img/products/popclick.webp' },
+  { name: 'גלידה סקווישי', img: 'img/products/gumball-wand.webp' },
+  { name: 'קול קיוב', img: 'img/products/cool-cube.webp' },
+  { name: 'LEGENDARY 23', img: 'img/products/legendary-yellow.webp' },
+  { name: 'מנורת לבה טורנדו', img: 'img/products/tornado-lamp.webp' },
+  { name: 'מיקרופון LIVE MUSIC', img: 'img/products/live-music.webp' },
+  { name: 'ביוטי ניילס', img: 'img/products/beauty-nails.webp' },
+  { name: 'דלי סליים 1 ק"ג', img: 'img/products/slime-bucket.webp' },
+  { name: 'LEGENDARY 23', img: 'img/products/legendary-red.webp' },
+  { name: 'באטר סמות׳', img: 'img/products/butter-smooth.webp' },
+  { name: 'סליים טאואר', img: 'img/products/slime-tower.webp' },
+  { name: 'נקניקו׳ש סקווישי', img: 'img/products/balloon-dog.webp' },
+  { name: 'מק-סקווישי', img: 'img/products/mac-squishy.webp' },
 ];
 const track = document.getElementById('track');
-const card = (p, i) => `<div class="prod" style="--i:${i}"><div class="pimg">${p.img ? `<img src="${p.img}" alt="${p.name}" loading="lazy">` : '<span>🧸</span>'}</div><h4>${p.name}</h4></div>`;
+const card = (p, i) => `<div class="prod" style="--i:${i}"><div class="pimg">${p.img ? `<img src="${p.img}" alt="${p.name}" decoding="async">` : '<span>🧸</span>'}</div><h4>${p.name}</h4></div>`;
 // חוזרים על הרשימה עד שיש מספיק כרטיסים למלא מסך רחב, ואז פעמיים ברצף כדי שהלולאה תתחבר בלי קפיצה
 let row = [...PRODUCTS];
 while (row.length < 8) row = row.concat(PRODUCTS);
